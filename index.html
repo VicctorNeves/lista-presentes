@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossa Lista de Sonhos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-main" aria-label="Principal">
+            <a href="#inicio">Início</a>
+            <span class="nav-sep" aria-hidden="true">|</span>
+            <a href="#como-funciona">Como Funciona</a>
+        </nav>
+        <div class="logo" aria-hidden="true">GV</div>
+        <div class="search-wrap">
+            <label class="visually-hidden" for="busca">Buscar presentes</label>
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <input type="search" id="busca" class="search-input" placeholder="Buscar..." autocomplete="off">
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <img class="hero-bg-img" src="assets/fundo.jpeg" alt="Casal em ambiente com natureza" decoding="async" fetchpriority="high">
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-inner">
+            <div class="logo logo--hero" aria-hidden="true">GV</div>
+            <h1 class="hero-title">Nossa lista de presentes!</h1>
+            <div class="hero-gifts-icon" aria-hidden="true">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="18" width="14" height="22" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <rect x="20" y="14" width="14" height="26" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <rect x="36" y="20" width="8" height="20" rx="1" stroke="currentColor" stroke-width="2"/>
+                    <path d="M11 18V12a3 3 0 013-3h0a3 3 0 013 3v6M27 14V9a3 3 0 013-3h0a3 3 0 013 3v5" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <p class="hero-text">
+                Sua presença é o mais importante, mas se desejar nos presentear, confira nossa lista de presentes divertidos!
+            </p>
+        </div>
+    </section>
+
+    <main class="main-content">
+
+        <section id="como-funciona" class="section">
+            <h2>Como funciona</h2>
+            <p>Escolha um item (ou mais de um), clique em <strong>Presentear via PIX</strong> e use a chave ou o QR Code que aparecem na janela. O valor sugerido está ao lado de cada presente — você pode contribuir com o valor que desejar.</p>
+        </section>
+
+        <section class="section gifts-section">
+            <h2 class="gifts-heading">Nossa lista</h2>
+            <div id="lista-presentes" class="gifts-grid"></div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Com carinho, <span class="logo-inline" aria-hidden="true">GV</span></p>
+    </footer>
+
+    <div id="modal-pix" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-pix-title" hidden>
+        <div class="modal-backdrop" data-close-modal></div>
+        <div class="modal-box">
+            <button type="button" class="modal-close" data-close-modal aria-label="Fechar">&times;</button>
+            <h2 id="modal-pix-title">Presentear via PIX</h2>
+            <p class="modal-presente" id="modal-presente-nome"></p>
+            <p class="modal-valor" id="modal-presente-valor"></p>
+            <div class="pix-block">
+                <p class="pix-label">Chave PIX (telefone)</p>
+                <div class="pix-key-row">
+                    <code id="pix-chave" class="pix-key">75999914620</code>
+                    <button type="button" class="btn btn-copy" id="btn-copiar-chave">Copiar chave</button>
+                </div>
+                <p class="pix-label">QR Code</p>
+                <div class="qr-wrap">
+                    <img id="pix-qr" src="" alt="QR Code para pagamento PIX" width="220" height="220">
+                </div>
+                <p class="pix-hint">Escaneie com o app do seu banco ou copie a chave acima.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
