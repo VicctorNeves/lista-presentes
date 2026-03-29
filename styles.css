@@ -450,6 +450,13 @@ body {
     min-width: 0;
 }
 
+.pix-key--emv {
+    font-size: 0.72rem;
+    font-weight: 500;
+    line-height: 1.45;
+    word-break: break-all;
+}
+
 .btn-copy {
     font-family: var(--font-sans);
     font-weight: 600;

@@ -15,9 +15,9 @@
             <a href="#inicio">Início</a>
             <span class="nav-sep" aria-hidden="true">|</span>
             <a href="#como-funciona">Como Funciona</a>
+            <span class="nav-sep" aria-hidden="true">|</span>
+            <a href="#lista-presentes">Lista de Presentes</a>
         </nav>
-        <div class="logo" aria-hidden="true">GV</div>
-
     </header>
 
     <section id="inicio" class="hero">
@@ -65,7 +65,7 @@
             <p class="modal-presente" id="modal-presente-nome"></p>
             <p class="modal-valor" id="modal-presente-valor"></p>
             <div class="pix-block">
-                <p class="pix-label">Chave PIX (telefone)</p>
+                <p class="pix-label" id="pix-label-chave">Chave PIX (telefone)</p>
                 <div class="pix-key-row">
                     <code id="pix-chave" class="pix-key">75999914620</code>
                     <button type="button" class="btn btn-copy" id="btn-copiar-chave">Copiar chave</button>
@@ -74,7 +74,7 @@
                 <div class="qr-wrap">
                     <img id="pix-qr" src="" alt="QR Code para pagamento PIX" width="220" height="220">
                 </div>
-                <p class="pix-hint">Escaneie com o app do seu banco ou copie a chave acima.</p>
+                <p class="pix-hint" id="pix-hint">Escaneie com o app do seu banco ou copie a chave acima.</p>
             </div>
         </div>
     </div>

@@ -1,9 +1,12 @@
 (function () {
     var PIX_CHAVE = "75999914620";
-    // QR com a chave PIX (texto); substitua por imagem estática se preferir PIX copia-e-cola EMV
-    var QR_URL =
-        "https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=10&data=" +
-        encodeURIComponent(PIX_CHAVE);
+
+    function qrUrlParaPayload(payload) {
+        return (
+            "https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=10&data=" +
+            encodeURIComponent(payload)
+        );
+    }
 
     var presentes = [
         {
@@ -12,6 +15,8 @@
             descricao: "",
             preco: 50,
             img: "assets/presente-1.jpeg",
+            pixCopiaECola:
+                "00020126360014BR.GOV.BCB.PIX0114+5575999914620520400005303986540550.005802BR5925Gessica Vitoria Souza dos6009SAO PAULO621405107xVt9XAB0V63048D50",
         },
         {
             id: 2,
@@ -19,6 +24,7 @@
             descricao: "",
             preco: 100,
             img: "assets/presente-2.jpeg",
+            pixCopiaECola: "00020126360014BR.GOV.BCB.PIX0114+55759999146205204000053039865406100.005802BR5925Gessica Vitoria Souza dos6009SAO PAULO62140510sa86R8Nmf063041F17",
         },
         {
             id: 3,
@@ -26,6 +32,7 @@
             descricao: "",
             preco: 150,
             img: "assets/presente-3.jpeg",
+            pixCopiaECola: "00020126360014BR.GOV.BCB.PIX0114+55759999146205204000053039865406150.005802BR5925Gessica Vitoria Souza dos6009SAO PAULO62140510AsrZdnzpBm6304E7F4",
         },
         {
             id: 4,
@@ -33,6 +40,7 @@
             descricao: "",
             preco: 200,
             img: "assets/presente-4.jpeg",
+            pixCopiaECola: "00020126360014BR.GOV.BCB.PIX0114+55759999146205204000053039865406200.005802BR5925Gessica Vitoria Souza dos6009SAO PAULO62140510QJ94ZZlN4T63045053",
         },
         {
             id: 5,
@@ -40,13 +48,15 @@
             descricao: "",
             preco: 250,
             img: "assets/presente-5.jpeg",
+            pixCopiaECola: "00020126360014BR.GOV.BCB.PIX0114+55759999146205204000053039865406250.005802BR5925Gessica Vitoria Souza dos6009SAO PAULO62140510zySqOTlsAS6304C4AE",
         },
         {
             id: 6,
-            titulo: "Levar alguém que não foi convidado",
+            titulo: "Caixa de ferramentas para o noivo fazer coisas de Homem",
             descricao: "",
-            preco: 1000,
-            img: "assets/presente-6.jpeg",
+            preco: 300,
+            img: "assets/caixa-de-ferramenta.jpg",
+            pixCopiaECola: "00020126360014BR.GOV.BCB.PIX0114+55759999146205204000053039865406300.005802BR5925Gessica Vitoria Souza dos6009SAO PAULO621405106QdFZoO0Gb63048D07",
         },
         {
             id: 7,
@@ -54,13 +64,15 @@
             descricao: "",
             preco: 350,
             img: "assets/presente-7.jpeg",
+            pixCopiaECola: "00020126360014BR.GOV.BCB.PIX0114+55759999146205204000053039865406350.005802BR5925Gessica Vitoria Souza dos6009SAO PAULO62140510Hbofw1MlOk63040E1F",
         },
         {
             id: 8,
-            titulo: "Ajuda pro noivo comprar kit TPM para a noiva",
+            titulo: "Ajuda para o noivo comprar kit TPM para a noiva",
             descricao: "",
             preco: 400,
             img: "assets/presente-8.jpeg",
+            pixCopiaECola: "00020126360014BR.GOV.BCB.PIX0114+55759999146205204000053039865406400.005802BR5925Gessica Vitoria Souza dos6009SAO PAULO62140510jtNKXsW1sv6304C269",
         },
         {
             id: 9,
@@ -68,6 +80,7 @@
             descricao: "",
             preco: 450,
             img: "assets/presente-9.jpeg",
+            pixCopiaECola: "00020126360014BR.GOV.BCB.PIX0114+55759999146205204000053039865406450.005802BR5925Gessica Vitoria Souza dos6009SAO PAULO62140510u7Num7amOT63041370",
         },
         {
             id: 10,
@@ -75,6 +88,7 @@
             descricao: "",
             preco: 500,
             img: "assets/presente-10.jpeg",
+            pixCopiaECola: "00020126360014BR.GOV.BCB.PIX0114+55759999146205204000053039865406500.005802BR5925Gessica Vitoria Souza dos6009SAO PAULO621405104oB2XI1uSk630431D8",
         },
         {
             id: 11,
@@ -82,6 +96,7 @@
             descricao: "",
             preco: 550,
             img: "assets/presente-11.jpeg",
+            pixCopiaECola: "00020126360014BR.GOV.BCB.PIX0114+55759999146205204000053039865406550.005802BR5925Gessica Vitoria Souza dos6009SAO PAULO62140510XhiozXGVnf63048768",
         },
         {
             id: 12,
@@ -89,7 +104,16 @@
             descricao: "",
             preco: 600,
             img: "assets/presente-12.jpeg",
-        }
+            pixCopiaECola: "00020126360014BR.GOV.BCB.PIX0114+55759999146205204000053039865406600.005802BR5925Gessica Vitoria Souza dos6009SAO PAULO62140510HcHCN0N6Lc63042B7E",
+        },
+        {
+            id: 13,
+            titulo: "Levar alguém que não foi convidado",
+            descricao: "",
+            preco: 1000,
+            img: "assets/presente-6.jpeg",
+            pixCopiaECola: "00020126360014BR.GOV.BCB.PIX0114+557599991462052040000530398654071000.005802BR5925Gessica Vitoria Souza dos6009SAO PAULO62140510qRmS4b8M7F63048371",
+        },
     ];
 
     function formatBRL(valor) {
@@ -156,20 +180,60 @@
             .replace(/</g, "&lt;");
     }
 
+    function payloadPixDoPresente(presente) {
+        if (
+            presente.pixCopiaECola &&
+            String(presente.pixCopiaECola).trim() !== ""
+        ) {
+            return String(presente.pixCopiaECola).trim();
+        }
+        return PIX_CHAVE;
+    }
+
     function abrirModal(presente) {
         var modal = document.getElementById("modal-pix");
         var nomeEl = document.getElementById("modal-presente-nome");
         var valorEl = document.getElementById("modal-presente-valor");
         var qr = document.getElementById("pix-qr");
+        var chaveEl = document.getElementById("pix-chave");
+        var labelChave = document.getElementById("pix-label-chave");
+        var hintEl = document.getElementById("pix-hint");
+        var btnCopiar = document.getElementById("btn-copiar-chave");
 
         if (!modal || !nomeEl || !valorEl) return;
+
+        var payload = payloadPixDoPresente(presente);
+        var usaEmv =
+            presente.pixCopiaECola &&
+            String(presente.pixCopiaECola).trim() !== "";
 
         nomeEl.textContent = presente.titulo;
         valorEl.textContent =
             "Sugestão de contribuição: " + formatBRL(presente.preco);
+
+        if (chaveEl) {
+            chaveEl.textContent = payload;
+            chaveEl.classList.toggle("pix-key--emv", usaEmv);
+        }
+        if (labelChave) {
+            labelChave.textContent = usaEmv
+                ? "Código PIX (copia e cola — valor já definido)"
+                : "Chave PIX (telefone)";
+        }
+        if (hintEl) {
+            hintEl.textContent = usaEmv
+                ? "Escaneie o QR ou cole o código no app do banco — o valor sugerido já está no PIX."
+                : "Escaneie com o app do seu banco ou copie a chave acima.";
+        }
+        if (btnCopiar) {
+            btnCopiar.textContent = usaEmv ? "Copiar código PIX" : "Copiar chave";
+        }
+
         if (qr) {
-            qr.src = QR_URL;
-            qr.alt = "QR Code PIX — chave " + PIX_CHAVE;
+            qr.src = qrUrlParaPayload(payload);
+            qr.alt = usaEmv
+                ? "QR Code PIX com valor definido"
+                : "QR Code PIX — chave " + PIX_CHAVE;
         }
 
         modal.hidden = false;
